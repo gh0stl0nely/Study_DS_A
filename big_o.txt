@@ -1,6 +1,90 @@
-What is the concept of Big O and Asymtotic Complexity?
+#### Information in regards to Big O and complexity analysis
 
-# What is 
+----------------------------------------
+# What is time complexity?
+- As programmers, we don't really calculate how fast a function runs by time. We
+don't say this function runs in exactly 2 seconds or 40.34 seconds. We must come up with a more general way of
+representing the speed of a function by counting the **total number of operation it performs**.
+----------------------------------------
+# What is space complexity?
+- When a function runs, the program makes use of the internal memory to store values, just like a human brain.
+However, similiar to time complexity, we cannot just say this function takes up 2.67MB of memory...
+What if the inputs change to a million items? Will the memory required double? triple? 
+Thus, we must find a way to generalize this "behaviour" instead of describing it straightforwardly.
 
+This is when asymptotic complexity analysis (and the famous big O notation) come into the picture ## 
+----------------------------------------
+# What is asymptotic complexity analysis? 
 
-#
+- As mentioned earlier, programmers don't use explicit unit of measurement of speed and memory that the function they write need.
+Instead, we make use of the asymptotic complexity concept.
+
+- The word "Asymptotic" means "approaching a value". 
+
+- When we say "approaching", we think about the "BEHAVIOUR" of the subject in question when it's moving, right?
+The subject can "constantly", "logarithmically", "linearly" approach something. These are some adverbs that will come in handy later
+when describing asymtotic complexity for function. 
+
+- In mathematical term, a function basically receives an INPUT, do somethinga and spits out an OUTPUT. 
+
+- When measuring complexity, ALWAYS ask yourself these 2 questions. 
+
+[
+- ** For time complexity: How does the number of operation increase as the INPUT changes?
+
+- ** For space complexity: How much memory does the function require when the INPUT changes?
+
+Take into account this simple function with 2 inputs (a,b)
+]
+
+function add(a,b){
+    a++;
+    b++;
+    return a +b;
+}
+- We will calculate the time complexity for this function. Now, how many steps are there?
+If you say 6, you are correct.
+
+a++ -> a = (a + 1) => Assignment and addition
+b++ -> b = (b + 1) => Assignment and addition
+a + b -> Addition 
+return -> Return statement
+
+- Now, ask yourself, does the number of operation changes if we change both inputs?
+=> NO, it does. The total number of operations will ALWAYS remain at 6.
+=> ** Here, we say the function run in "CONSTANT" time (we will go through how to represent this later)
+
+- What about space? Will memory increase if I change the two inputs?
+=> The answer is also NO. Because we do 6 operations, each operation requires 1 memory, so in total we require 6 units of memory.
+=> Even if we increase our two inputs to a million each, the space unit is still 6.
+=> AGAIN, we are NOT talking about physical memory like 1, 2 RAM or any specific units of computer storage. 
+=> ** Here, we say the function requires "CONSTANT" space
+----------------------------------------
+# What is upper bound (or Big O)? ** 
+----------------------------------------
+# What is lower bound (or Big Omega)?
+----------------------------------------
+# What is tight bound (or Big Theta)?
+----------------------------------------
+# What is "CONSTANT" Time / Space or O(1)? 
+- Constant time / space operation is denoted as O(1).
+
+- We say a function runs in Constant Time when the number of operations remain THE SAME regardless of inputs.
+
+- Example of CONSTANT operation: mathematic operation, insertion to the back of a list / array, retrieve an item at an specific index in a list /array, comparison etc...
+
+- What other example can you think of?
+----------------------------------------
+# What is "LINEAR" Time / Space or O(n)? 
+
+----------------------------------------
+# What is "MULTI-LINEAR" Time / Space or O(m+n)? 
+----------------------------------------
+# What is "Logarithmic" Time / Space or O(Log(n))? 
+----------------------------------------
+# What is "FACTORIAL" Time / Space or O(n!)? 
+----------------------------------------
+# What is O(n * log(n)) Time / Space?
+----------------------------------------
+# What is O(|V| + |E|) Time / Space?
+----------------------------------------
