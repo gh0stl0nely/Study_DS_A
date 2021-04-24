@@ -1,2 +1,3 @@
-# Study_DS_A
-My study of data structure and algorithm
+# Data Structure and Algorithm
+
+## This repository is dedicated wholly to my study of data structure and algorithm
