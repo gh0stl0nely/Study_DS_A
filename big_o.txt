@@ -76,15 +76,36 @@ return -> Return statement
 - What other example can you think of?
 ----------------------------------------
 # What is "LINEAR" Time / Space or O(n)? 
+- Time: The number of operations will change "linearly" with the n inputs.
+
+- Space: Memory required will increase linearly along with n inputs.
+
+Example:
+function printA(nums){
+    // nums = [1,2,3,4,5] or [1,2,3]
+    for(let i = 0; i < nums.length; i++){
+        console.log(nums[i]);
+    }
+    // If nums.length = 5, then there will be 5 lines printed
+    // If nums.length = 3, then there will be 3 lines printed
+}
+
+Question: Can you name some asymtotic function are upper bounds of O(n)?
 
 ----------------------------------------
 # What is "MULTI-LINEAR" Time / Space or O(m+n)? 
+
+Question: Is O(m+n) an upper bound, lower bound or tight bound of O(n)?
 ----------------------------------------
 # What is "Logarithmic" Time / Space or O(Log(n))? 
+Question: Can you name some asymtotic function are lower bounds of O(log(n))?
 ----------------------------------------
 # What is "FACTORIAL" Time / Space or O(n!)? 
+Question: Can you name some asymtotic function are lower bounds of O(n!)?
 ----------------------------------------
 # What is O(n * log(n)) Time / Space?
+Question: Can you name some asymtotic function are upper bounds of O(n * log(n))?
 ----------------------------------------
 # What is O(|V| + |E|) Time / Space?
+Question: Can you name some asymtotic function are lower bounds of O(n)?
 ----------------------------------------

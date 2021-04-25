@@ -1,0 +1,74 @@
+# What is memoization?
+
+- Memoization is an optimization technique when solving algorithm question. 
+
+- It is one of the main technique in dynamic programming.
+
+- For recursive function that does the same thing over and over until reaching a base case, you will
+be more than likely to use a hashtable or a javascript object or an array or any suitable data structure
+to store the result of any previous recursive calls to avoid recomputation.
+
+- One of the most basic memoization question is the fibonacci sequence, in which the third numbers
+is the sum of the previous two numbers, starting with 0 and 1 (0,1,1,2,3,5...)
+
+See the implementation for calculating the nth Fibonacci number, where n > 0
+
+function calculateFib(n){
+    if(n == 1){
+        return 0;
+    }
+
+    if(n == 2){
+        return 1;
+    }
+
+    return calculateFib(n - 2) + calculateFib(n - 1);
+}
+
+- We can see that without any storage of previous value, there will be recomputation. Let's make it clearer
+
+                calculateFib(5)
+                /              \------------\
+            calculateFib(4)                 calculateFib(3)
+            /           \                        /           \
+    calculateFib(3)   calculateFib(2)      calculateFib(2)    calculateFib(1)
+    /              \
+calculateFib(2)     calculateFib(1)
+
+We see that the value of calculateFib(3) has to be recomputed twice. Imagine getting the 99th fibonacci number...
+
+We time and space complexity of the above implementation is O(2^n) or Exponential. Check out the 2nd link for some discussion as to why.
+
+- Now, this is a perfect opportunity for us to reduce the repeated computation by using an array
+
+function memoCalculateFib(n, memoArray){
+    if(n == 1){
+        return 0;
+    }
+
+    if(n == 2){
+        return 1;
+    }
+        
+    memoArray[n] = memoCalculateFib(n - 2, memoArray) + memoCalculateFib(n - 1, memoArray);
+    
+    return memoArray[n];
+}
+
+- We use memoArray to store / cache value at every computation. 
+- If we want to calculate the 4th fibonacci number, we know that the 3rd fibonacci number has already been computated previously.
+
+=> memoArray[3] = memoCalculateFib(2, memoArray) + memoCalculateFib(1, memoArray);
+=> memoArray[3] = 1 + 0 = 1
+
+=> memoArray[4] = memoCalculateFib(3, memoArray) + memoCalculateFib(2, memoArray);
+=> memoArray[4] = 1 + 1 = 2 (where memoArray[3]' result has already been computed and stored on line 61 and 62)
+
+With memoization, the time and space complexity goes down to O(n), because in each recursive call, we just need to get the stored value
+from memoArray, rather than recomputing it. 
+
+Supporting Link: 
+
+1) https://www.mathsisfun.com/numbers/fibonacci-sequence.html
+
+2) https://stackoverflow.com/questions/7547133/why-is-the-complexity-of-computing-the-fibonacci-series-2n-and-not-n2
