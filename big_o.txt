@@ -81,7 +81,7 @@ return -> Return statement
 - Space: Memory required will increase linearly along with n inputs.
 
 Example:
-function printA(nums){
+function print(nums){
     // nums = [1,2,3,4,5] or [1,2,3]
     for(let i = 0; i < nums.length; i++){
         console.log(nums[i]);
@@ -94,14 +94,89 @@ Question: Can you name some asymtotic function are upper bounds of O(n)?
 
 ----------------------------------------
 # What is "MULTI-LINEAR" Time / Space or O(m+n)? 
+- Time: The number of operations will change "linearly" with n AND m inputs.
+
+- Space: Memory required will increase linearly along with n AND m inputs.
+
+function printTwo(nums1, nums2){
+    // nums1 and nums2 are array 
+    let n = nums1.length;
+    let m = nums2.length;
+
+    for(let i = 0; i < n; i++){
+        console.log(i);
+    }
+
+     for(let j = 0; j < m; j++){
+        console.log(j);
+    }
+}
+- Two initial assignments are O(1)
+
+- In the first loop, you are looping and printing each number, starting from 0 to n. 
+-> We are doing at least n operation at this point
+
+- In the second loop, you are looping and printing each number, starting from 0 to m.
+-> We are doing at least n + m operation at this point
+
+If n = 9 and m = 10, then we are doing 21 operations (19 + 2) 
+If n = 10000000 and m = 50000000, then we are doing 60000002 operations (60000000 + 2) or O(60000002)
+=> As you can see, for time complexity, as the length the two input arrays change, the number of operation increases linearly
+=> Time: O(m + n + 2), because 2 is a constant and does not significantly affect the time complexity, so we drop it, becoming O(m + n)
+=> Space: O(1), as we don't store anything apart from the length of the input arrays, which is a constant operation. 
 
 Question: Is O(m+n) an upper bound, lower bound or tight bound of O(n)?
+----------------------------------------
+# What is "Quadratic" Time / Space or O(n^2) or O(n*n)? 
+- Time: The number of operations DOUBLES as input N goes up by 1
+(i.e: n = 3, 2^3 = 8, => If n goes up to 4, then 2^4 = 16 (or 8 * 2))
+
+- Space: The amount of memory needed is directly proportional as n goes up. 
+
+Take this function as an example:
+
+function duplicateMatrix(matrix){
+    // matrix = [
+        [1,2,3]
+        [4,5,6]
+    ]
+
+    let newMatrix = [[],[]]
+    let n = matrix.length; // Number of rows
+    let m = matrix[0].length; // Number of columns
+
+    for(let row = 0; row < n.length; row++){
+        for(let col = 0; col < m.length; col++){
+            newMatrix[row][col] = matrix[row][col];
+        }
+    }
+
+    return newMatrix;
+}
+
+- This function takes in a n by m matrix, copies all the cell values into another matrix called newMatrix and returns it
+- For each row in the original matrix, we access the value based on the current column and save it to the same slot in the new matrix
+- For time complexity, at every cell in the original matrix, we perform a constant time (O(1)) assignment operation, totaling 6 operations.
+- For space complexity, at every cell in the original matrix, we store another new value in the new matrix, totaling 6 times.
+
+If we add another row [7,8,9] to the matrix, the total number of operation increase to 9
+If n = 2, m = 3 => n * m = 6
+If n = 3, m = 3 => n * m = 9
+=> This brings us to the asymptotic complexity of O(n * m);
+=> Remember that this is an asymptotic representation, NOT the exact representation of the function performance. 
+
+Note: Typically, when we see a scenario where we have n elements, and we do m amount of work for EACH elements, 
+then the time complexity is often O(n*m) because the product is the number of operations that the function will approximately perform. 
+
 ----------------------------------------
 # What is "Logarithmic" Time / Space or O(Log(n))? 
 Question: Can you name some asymtotic function are lower bounds of O(log(n))?
 ----------------------------------------
 # What is "FACTORIAL" Time / Space or O(n!)? 
 Question: Can you name some asymtotic function are lower bounds of O(n!)?
+----------------------------------------
+# What is "EXPONENTIAL" Time / Space or O(2^n)? 
+Question: Can you name some asymtotic function are lower bounds of O(log(n))?
 ----------------------------------------
 # What is O(n * log(n)) Time / Space?
 Question: Can you name some asymtotic function are upper bounds of O(n * log(n))?

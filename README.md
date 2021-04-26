@@ -19,7 +19,20 @@ Some solutions may be faster but require more space and vice versa.
  
 These types of question also come up in real world application. Thus, being able to reason critically and analytically about a smaller problem, the programmer will be able to improve his decision making ability when it comes to designing optimal solution to real world products, that are used by millions of users. 
 
-## That is why I create this repository. Not just for myself, but for everyone who wants to improve their data structure and algorithm game and critical thinking.
+That is why I create this repository. Not just for myself, but for everyone who wants to improve their data structure and algorithm game and critical thinking.
+
+## Feel free to critique my codes and explanations by creating issues that you see fit.
+
+# Contribution 
+
+If you want to contribute to this small project, you can start by looking at the issues I have created,
+assign the ones that you like to work on, clone this repository, create your own git branch with the name relevant to the issue at hand
+
+Once you are done, create a pull request and I will try review it as soon as I have time
+
+Thank you for taking interest in my project :-)
+
+
 
 
 
