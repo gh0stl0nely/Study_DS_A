@@ -1,5 +1,10 @@
-function isPalindrome(x){
+/**
+ * 
+ * @param {number} num 
+ * @returns {boolean}
+ */
+
+module.exports = function isPalindrome(num){
     return true;
 }
 
-console.log(isPalindrome(234));
