@@ -1,7 +1,3 @@
-package palindrome;
-
-import java.util.*;
-
 /**
  * Checks whether the integer input is a palindrome A palindrome is a number the
  * same forward and backward. Condition: Do not convert argument into a string
@@ -10,17 +6,8 @@ import java.util.*;
  * @return boolean
  */
 
-public class Palindrome {
 
-    public static void main(String[] args) {
-        System.out.println(isPalindrome(20)); // false
-        System.out.println(isPalindrome(123321)); // true
-        System.out.println(isPalindrome(48484848)); // false
-        System.out.println(isPalindrome(88388)); // true
-        System.out.println(isPalindrome(1)); // false
-    }
-
-    /**
+ /**
      * Explanation: The very first thing we should notice is negative number is not
      * a palindrome Because of the (-) negative sign at the beginning. Some values
      * that we need to prepare in advance are:
@@ -51,27 +38,26 @@ public class Palindrome {
      * is length of input value Space: O(1), we only manipulate variable and didn't
      * make use of any extra memory
      */
-    public static boolean isPalindrome(int n) {
-        if (n < 0)
+
+module.exports = function isPalindrome(num){
+    if(num < 0) return false;
+    // 123321
+    const length = Math.floor(Math.log10(num) + 1 );
+    let mask = Math.pow(10, length - 1);
+
+    let firstDigit, lastDigit;
+    
+    for(let i = 0; i < Math.floor(length / 2); i++){
+        firstDigit = Math.floor(num / mask);
+        lastDigit = num % 10;
+
+        if(firstDigit != lastDigit)
             return false;
-
-        int length = (int) Math.floor(Math.log10(n) + 1);
-        int mask = (int) Math.pow(10, length - 1);
-
-        int firstDigit;
-        int lastDigit;
-        for (int i = 0; i < Math.floor(length / 2); i++) {
-            firstDigit = n / mask;
-            lastDigit = n % 10;
-
-            if (firstDigit != lastDigit)
-                return false;
-
-            n %= mask;
-            n /= 10;
-            mask /= 100;
-        }
-
-        return true;
+       
+        num %= mask;
+        num = Math.floor(num / 10);
+        mask /= 100;
     }
+
+    return true;
 }
