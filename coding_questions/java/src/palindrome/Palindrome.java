@@ -1,17 +1,15 @@
-package palindrome;
-
-import java.util.*;
+package Palindrome;
 
 /**
  * Checks whether the integer input is a palindrome A palindrome is a number the
  * same forward and backward. Condition: Do not convert argument into a string
  * 
- * @params n
+ * @params num
  * @return boolean
  */
 
 public class Palindrome {
-
+    
     public static void main(String[] args) {
         System.out.println(isPalindrome(20)); // false
         System.out.println(isPalindrome(123321)); // true
@@ -48,27 +46,27 @@ public class Palindrome {
      * After loop exits, returns true to indicate the input value is a palindrome
      * 
      * Time: Supposed to be O(m/2), but we drop the constant 1/2, so O(m), where m
-     * is length of input value Space: O(1), we only manipulate variable and didn't
-     * make use of any extra memory
+     * is length of input value 
+     * Space: O(1), we only manipulate variable and didn't make use of any extra memory
      */
-    public static boolean isPalindrome(int n) {
-        if (n < 0)
+    protected static boolean isPalindrome(int num) {
+        if (num < 0)
             return false;
 
-        int length = (int) Math.floor(Math.log10(n) + 1);
+        int length = (int) Math.floor(Math.log10(num) + 1);
         int mask = (int) Math.pow(10, length - 1);
 
         int firstDigit;
         int lastDigit;
         for (int i = 0; i < Math.floor(length / 2); i++) {
-            firstDigit = n / mask;
-            lastDigit = n % 10;
+            firstDigit = num / mask;
+            lastDigit = num % 10;
 
             if (firstDigit != lastDigit)
                 return false;
 
-            n %= mask;
-            n /= 10;
+            num %= mask;
+            num /= 10;
             mask /= 100;
         }
 
