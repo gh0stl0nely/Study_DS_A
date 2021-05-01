@@ -11,12 +11,11 @@ package AddStringPrimitive;
 
 public class AddStringPrimitive {
     public static void main(String[] args) {
-        System.out.println(addStringPrimitive("192", "390"));
-        System.out.println(addStringPrimitive("2000", "2"));
-        System.out.println(addStringPrimitive("274", "23"));
-        System.out.println(addStringPrimitive("20", "1937"));
-        System.out.println(addStringPrimitive("2", "000"));  // Returns invalid string
-        System.out.println(addStringPrimitive("03", "2"));  // Returns invalid string
+      System.out.println(addStringPrimitive("192", "390")); // "582"
+      System.out.println(addStringPrimitive("2000", "2")); // "2002"
+      System.out.println(addStringPrimitive("999", "9")); // "1008"
+      System.out.println(addStringPrimitive("20", "1937")); // "1957"
+      System.out.println(addStringPrimitive("03", "2"));  // "Invalid String"
     }
 
     /**
