@@ -47,8 +47,10 @@
      * Space: O(1), no extra memory needed
      */
 
-module.exports = function isPowerOfTwo(num){
-    if(num < 1) return false;
+function isPowerOfTwo(num){
+   if(num < 1) return false;
 
-    return (num & num - 1) == 0;
+   return (num & num - 1) == 0;
 }
+
+module.exports.isPowerOfTwo = isPowerOfTwo;

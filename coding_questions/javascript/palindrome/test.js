@@ -1,4 +1,4 @@
-const isPalindrome =  require("./solution.js");
+const {isPalindrome} =  require("./solution.js");
 
 test('test for negative number', () => {
     expect(isPalindrome(-5)).toBe(false);

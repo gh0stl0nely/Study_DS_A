@@ -1,4 +1,4 @@
-const isPowerOfTwo = require("./solution");
+const {isPowerOfTwo} = require("./solution");
 
 test('test for wrong false big case', () => {
     expect(isPowerOfTwo(18999)).toBe(false);

@@ -38,8 +38,8 @@
      * is length of input value Space: O(1), we only manipulate variable and didn't
      * make use of any extra memory
      */
-
-module.exports = function isPalindrome(num){
+    
+function isPalindrome(num){
     if(num < 0) return false;
     // 123321
     const length = Math.floor(Math.log10(num) + 1 );
@@ -61,3 +61,5 @@ module.exports = function isPalindrome(num){
 
     return true;
 }
+
+module.exports.isPalindrome = isPalindrome;
