@@ -1,0 +1,68 @@
+Q: What is a difference between Mutex, monitor, semaphore?
+
+A: These 3 words are commonly known and referred to under the multithreading context. 
+Before we start, I want to say why these ideas come about in multithreading in the first place.
+
+You can think of a "thread" as a small resource that the CPU allocates to a program to carry out 
+specific instructions that are NOT in a synchronous (step by step) manner. 
+
+For instance, one thread (or process) can do heavy mathematic calculation and another thread will
+handle database connection. 
+
+But, what if there is one single variable that will be accessed by two threads? One thread will change the 
+value of that variable and the second thread will use that variable to do something else. 
+If both threads run at the same time, will the value that is used by the second thread the old or the new 
+value? What if the first thread is slower or faster than the second thread?
+
+Therefore, a Solution that Java creators have come up with is a way to prevent threads from
+doing certain operation. In Java, 
+The key word is "synchronized"
+
+< Please refer to coding_question.java.MultiThreading.java for more context and information
+
+public class Solution {
+    int a = 0;
+
+    public static void add(){
+        while(a != 5){
+            a++;
+            System.out.println(a); 
+        }
+
+        // Results can vary: "1 2 3 4 5" or "2 2 3 4 5" or "2 4 5 3 3" 
+    }
+
+}
+
+=> If there are 3 threads running this method, the results can be because all three threads are calling this method and changing "a" at the same time.
+
+* The Solution is to use the keyword "synchronized"
+
+
+public static void add(){
+
+    synchronized(Solution.class){
+        while(a != 5){
+            a++;
+            System.out.println(a); 
+        }
+    }
+
+    // The printed result is always "1 2 3 4 5", because only one thread can call this method
+    // at one time. Once it's done, the next thread comes in a terminate because is already 5
+}
+>
+
+* THE MUTEX in this case is The Class itself. Java program simply "closes" acccess to the Solution class 
+, hence, to the "a" variable except for ONE thread, tell other threads to wait 
+UNTIL the only thread is done. MUTEX is known as the "LOCK".
+
+* THE MONITOR IS the code block declared by the "synchronized" keyword. The operation within the
+synchronized block is "MONITORED" and protected to make sure there is only ONE thread inside that block
+at a time.
+
+* THE SEMAPHORE: A similar concept to Mutex, but instead of allowing only 1 thread, programmers
+can write code that specifically lets "x" amount of threads to access certain shared resources at one time,
+depending on the programmer's needs. 
+
+-> Read more about Semaphore: https://www.geeksforgeeks.org/semaphore-in-java/#:~:text=A%20semaphore%20controls%20access%20to,zero%2C%20then%20access%20is%20denied.&text=Thus%2C%20to%20access%20the%20resource,a%20permit%20from%20the%20semaphore.
