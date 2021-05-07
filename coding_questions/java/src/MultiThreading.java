@@ -4,6 +4,7 @@ public class MultiThreading {
        Thread t1 = new MyThread();
        Thread t2 = new MyThread();
        Thread t3 = new MyThread();
+       System.out.println(Math.round((double) (547602 * 3) / 10));
 
        t1.start();
        t2.start();
