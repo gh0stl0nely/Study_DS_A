@@ -18,17 +18,19 @@ public class LinkedList {
         list.addAtIndex(3, new Node(0)); // 0 -1 4 0 5 7 6
         list.addAtIndex(10, new Node(0)); // 0 -1 4 0 5 7 6 0, size = 8
         list.print();
-        System.out.println("Size now is " + list.size());
-        System.out.println("Deleted node value is " + list.deleteAtIndex(3).val);
-        System.out.println("Deleted node value is " + list.deleteAtIndex(5).val);
-        System.out.println("Deleted node value is " + list.deleteAtIndex(0).val);
+        System.out.println("Current size is " + list.size());
+        System.out.println("Deleted node value is " + list.deleteAtIndex(3).val); // 0 -1 4 5 7 6 0
+        System.out.println("Deleted node value is " + list.deleteAtIndex(5).val); // 0 -1 4 5 7 0
+        System.out.println("Deleted node value is " + list.deleteAtIndex(0).val); // -1 4 5 7 0
+        System.out.println("Deleted node value is " + list.deleteAtIndex(list.size() - 1).val); //  -1 4 5 7
+        System.out.println(list.getHead().val); // -1 
+        System.out.println(list.getTail().val); // 7
         System.out.println("-----AFTER DELETION-----");
-        list.print(); // Should we size 7
-
-        // System.out.println("Deleted node value is " + list.deleteAtIndex(4).val);
-        // System.out.println(String.format("Value of node at index 2 is %d",
-        // list.getNode(2) != null ? : ));
-        System.out.println(String.format("Current size of list is %d", list.size()));
+        System.out.println(String.format("New size is %d", list.size()));
+        list.print();
+        System.out.println("-----AFTER REVERSAL-----");
+        list.reverse();
+        list.print();
     }
 
     /**
@@ -140,16 +142,19 @@ public class LinkedList {
             this.head = curr.next;
             curr = null;
             size--;
-            System.out.println("IN HERE");
             return temp;
         }
 
         int counter = 0;
         while (curr != null) {
+
             if (counter + 1 == index) {
                 Node temp = curr.next;
-                // curr.next = null;
                 curr.next = curr.next.next;
+                // A check to make sure if we need to 
+                if(counter + 1 == this.size() - 1){
+                    this.tail = curr;
+                }
                 size--;
                 return temp;
             }
