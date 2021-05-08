@@ -31,6 +31,21 @@ public class LinkedList {
         System.out.println("-----AFTER REVERSAL-----");
         list.reverse();
         list.print();
+        System.out.println("-----NEW HEAD AND TAIL-----");
+        System.out.println(list.getHead().val);
+        System.out.println(list.getTail().val);
+
+        // ---- NEW LIST 
+
+        LinkedList newList = new LinkedList();
+        for(int i = 0; i < 10; i++){
+            newList.addToTail(new Node(i));
+        }
+        System.out.println("-----BEFORE REVERSAL-----");
+        newList.print();
+        System.out.println("-----AFTER REVERSAL-----");
+        newList.reverse();
+        newList.print();
     }
 
     /**
@@ -151,7 +166,6 @@ public class LinkedList {
             if (counter + 1 == index) {
                 Node temp = curr.next;
                 curr.next = curr.next.next;
-                // A check to make sure if we need to 
                 if(counter + 1 == this.size() - 1){
                     this.tail = curr;
                 }
@@ -189,14 +203,27 @@ public class LinkedList {
     }
 
     /**
-     * TODO
      * Reverse the linked list
      * If the linked list has the size of 1, switch head and tail
      * If the linked list has the size of 0, return
      */
 
     public void reverse() {
+        if(this.size() <= 1) return;
 
+        Node prev = null;
+        Node curr = this.head;
+        Node next = null;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        this.tail = this.head;
+        this.head = prev;
+       
     }
 
     /**
