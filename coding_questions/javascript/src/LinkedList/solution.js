@@ -42,7 +42,7 @@ class LinkedList {
     }
 
     addToIndex(index, node){
-        if (node == null)
+        if (node == null || index == null)
             return;
 
         if (index <= 0) {
@@ -56,7 +56,7 @@ class LinkedList {
                 if (counter + 1 == index) {
                     node.next = curr.next;
                     curr.next = node;
-                    size++;
+                    this.size++;
                     break;
                 }
 
@@ -67,7 +67,7 @@ class LinkedList {
     }
 
     deleteAtIndex(index){
-        if (index < 0 || index >= this.size()) {
+        if (index < 0 || index >= this.listSize()) {
             return null;
         }
 
@@ -77,7 +77,7 @@ class LinkedList {
             let temp = curr;
             this.head = curr.next;
             curr = null;
-            size--;
+            this.size--;
             return temp;
         }
 
@@ -86,10 +86,10 @@ class LinkedList {
             if (counter + 1 == index) {
                 let temp = curr.next;
                 curr.next = curr.next.next;
-                if(counter + 1 == this.size() - 1){
+                if(counter + 1 == this.listSize() - 1){
                     this.tail = curr;
                 }
-                size--;
+                this.size--;
                 return temp;
             }
 
@@ -141,6 +141,18 @@ class LinkedList {
             this.tail = node;
         }
         this.size++;
+    }
+
+    toArray(){
+        let array = [];
+
+        let curr = this.head;
+        while(curr != null){
+            array.push(curr);
+            curr = curr.next;
+        }
+
+        return array;
     }
 }
 
