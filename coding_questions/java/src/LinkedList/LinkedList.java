@@ -76,8 +76,6 @@ public class LinkedList {
         if (this.isEmpty()) {
             this.head = node;
             this.tail = node;
-            this.head.next = this.tail;
-            this.tail.next = null;
         } else {
             Node curr = this.head;
             node.next = curr;
