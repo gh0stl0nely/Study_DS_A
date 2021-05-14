@@ -1,7 +1,19 @@
 package ValidSudoku;
 import java.util.HashSet;
 
-
+/**
+ * Given a 9x9 2D array which represents a sudoku board 
+ * Return true if the sudoku board is valud
+ * Otherwise, return false
+ * To be valid, the sudoku board must meet these conditions
+ * 1) Each row must not contain repeating values
+ * 2) Each column must not contain repeating values
+ * 3) A cell with value 0 is considered empty
+ * 4) Each subgrid must not contain repeating values
+ * 
+ * @params sudoku
+ * @returns boolean
+ */
 public class ValidSudoku {
 
     public static void main(String[] args) {
@@ -80,8 +92,6 @@ public class ValidSudoku {
         if(sudoku[i][j] == 0) continue;
 
         if(!set.add(sudoku[i][j])){
-            System.out.println(row);
-            System.out.println(col);
             return false;
         }
       }
