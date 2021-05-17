@@ -1,0 +1,35 @@
+.:	Any one character	
+\d:	Any digit	
+\D:	Any non-digit	
+\s:	A space, line break, or tab character
+\S:	Anything except spaces, tabs, and line breaks
+[a-z]:	Any letter from a to z
+[0-9]:	Any digit from 0 to 9.
+\w: Any word character
+\W: Any non-word character
+
+
+A?	The character 'A' occurs once or not at all	A
+B+	The character 'B' occurs one or more times	BBBB
+C*	The character 'C' occurs zero or more times	CCC
+D{n}	The character 'D' occurs n times	The pattern D{4} matches DDDD
+E{n,}	The character 'E' occurs n or more times	The pattern E{2,} matches EEEEEEE
+F{n,m}	The character 'F' occurs between n and m times	The pattern E{2,4} matches EEEE
+
+[a-d]?	A character between 'a' and 'd' occurs once or not at all	a, b, c, d
+[b-d,z]+	The characters 'b', 'c', 'd', or 'z' occur one or more times	b, bcdcdbdbdbdbzzzzbbzbzb, zbz
+[1,7-9]*	The digits 1, 7, 8, or 9 occur zero or more times	1, 7, 9, 9777, 111199
+1{5}	The digit 1 occurs 5 times	11111
+[1,2,a,b]{2}	The symbols 1, 2, 'a', or 'b' occur twice	11, 12, 1a, ab, 2b, bb, 22
+[a,0]{2,3}	The symbols 'a' or 0 occur 2 or 3 times	aa, a0,00,0a, aaa,000, a00,0a0, a0a
+
+"^ means that the substring must include the beginning of the string."
+"$ means that the substring must include the end of the string."
+a{3}	|aaa| a |aaa| a |aaa|
+a{3}$	aaa a aaa a |aaa|
+^a{3}	|aaa| a aaa a aaa
+^a{3}$	aaa a aaa a aaa
+
+Link: 
+- https://codegym.cc/quests/lectures/questmultithreading.level02.lecture11
+- https://codegym.cc/groups/posts/regex-java
